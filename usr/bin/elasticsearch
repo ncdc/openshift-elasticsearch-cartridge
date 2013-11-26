@@ -117,6 +117,8 @@ launch_service()
     props=$3
     es_parms="-Delasticsearch"
 
+    es_parms="$es_parms -Des.path.conf=$OPENSHIFT_ELASTICSEARCH_DIR/conf"
+
     if [ "x$pidpath" != "x" ]; then
         es_parms="$es_parms -Des.pidfile=$pidpath"
     fi
