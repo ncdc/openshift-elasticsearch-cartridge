@@ -9,6 +9,7 @@ Cartridge-Version: 0.0.1
 Cartridge-Vendor: julianandandy
 Categories:
   - web_framework
+  - service
 Provides:
   - elasticsearch
   - elasticsearch-0.90
