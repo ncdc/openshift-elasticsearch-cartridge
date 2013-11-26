@@ -17,11 +17,16 @@ Scaling:
   Min: 1
   Max: -1
 Endpoints:
-  - Private-IP-Name:   IP
-    Private-Port-Name: PORT
-    Private-Port:      9200
-    Public-Port-Name:  PROXY_PORT
-  - Private-IP-Name:   IP
-    Private-Port-Name: TRANSPORT_PORT
-    Private-Port:      9300
-    Public-Port-Name:  TRANSPORT_PROXY_PORT
+- Private-IP-Name:   IP
+  Private-Port-Name: PORT
+  Private-Port:      9200
+  Public-Port-Name:  PROXY_PORT
+  Protocols:
+  - http
+  Mappings:
+  - Frontend: ''
+    Backend: ''
+- Private-IP-Name:   IP
+  Private-Port-Name: TRANSPORT_PORT
+  Private-Port:      9300
+  Public-Port-Name:  TRANSPORT_PROXY_PORT
