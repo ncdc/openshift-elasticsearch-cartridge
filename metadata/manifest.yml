@@ -1,0 +1,27 @@
+Name: elasticsearch
+Cartridge-Short-Name: ELASTICSEARCH
+Display-Name: ElasticSearch 0.90.7
+Description: "ElasticSearch"
+Version: '0.90.7'
+License: Apache
+Vendor: elasticsearch.org
+Cartridge-Version: 0.0.1
+Cartridge-Vendor: julianandandy
+Categories:
+  - web_framework
+Provides:
+  - elasticsearch
+  - elasticsearch-0.90
+  - elasticsearch-0.90.7
+Scaling:
+  Min: 1
+  Max: -1
+Endpoints:
+  - Private-IP-Name:   IP
+    Private-Port-Name: PORT
+    Private-Port:      9200
+    Public-Port-Name:  PROXY_PORT
+  - Private-IP-Name:   IP
+    Private-Port-Name: TRANSPORT_PORT
+    Private-Port:      9300
+    Public-Port-Name:  TRANSPORT_PROXY_PORT

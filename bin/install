@@ -1,0 +1,3 @@
+#!/bin/bash -e
+
+mkdir -p $OPENSHIFT_ELASTICSEARCH_DIR/run $OPENSHIFT_DATA_DIR/elasticsearch
