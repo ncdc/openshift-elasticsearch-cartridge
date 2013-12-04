@@ -203,7 +203,8 @@ network.bind_host: <%= ENV['OPENSHIFT_ELASTICSEARCH_IP'] %>
 # Set the address other nodes will use to communicate with this node. If not
 # set, it is automatically derived. It must point to an actual IP address.
 #
-# network.publish_host: 192.168.0.1
+network.publish_host: PUBLISH_HOST
+network.publish_port: TRANSPORT_PROXY_PORT
 
 # Set both 'bind_host' and 'publish_host':
 #
@@ -211,7 +212,7 @@ network.bind_host: <%= ENV['OPENSHIFT_ELASTICSEARCH_IP'] %>
 
 # Set a custom port for the node to node communication (9300 by default):
 #
-transport.tcp.port: TRANSPORT_TCP_PORT
+# transport.tcp.port: 9300
 
 # Enable compression for all communication between nodes (disabled by default):
 #

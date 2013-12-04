@@ -1,0 +1,4 @@
+#!/bin/bash -e
+
+ip_address=$(python -c "import socket; print socket.gethostbyname('$OPENSHIFT_GEAR_DNS')")
+echo $ip_address:$OPENSHIFT_ELASTICSEARCH_TRANSPORT_PROXY_PORT

@@ -1,33 +1,46 @@
 Name: elasticsearch
 Cartridge-Short-Name: ELASTICSEARCH
-Display-Name: ElasticSearch 0.90.7
+Display-Name: ElasticSearch 1.0.0.RC1-SNAPSHOT
 Description: "ElasticSearch"
-Version: '0.90.7'
+Version: '1.0.0.RC1-SNAPSHOT'
 License: Apache
 Vendor: elasticsearch.org
 Cartridge-Version: 0.0.1
 Cartridge-Vendor: julianandandy
+
 Categories:
   - web_framework
   - service
+
 Provides:
   - elasticsearch
-  - elasticsearch-0.90
-  - elasticsearch-0.90.7
+  - elasticsearch-1.0.0.RC1-SNAPSHOT
+  - elasticsearch-1.0.0.RC1-SNAPSHOT
+
+Publishes:
+  publish-unicast-host:
+    Type: NET_TCP:elasticsearch-cluster-info
+
+Subscribes:
+  set-unicast-hosts:
+    Type: NET_TCP:elasticsearch-cluster-info
+
 Scaling:
   Min: 1
   Max: -1
+
 Endpoints:
-- Private-IP-Name:   IP
-  Private-Port-Name: PORT
-  Private-Port:      9200
-  Public-Port-Name:  PROXY_PORT
-  Protocols:
-  - http
-  Mappings:
-  - Frontend: ''
-    Backend: ''
-- Private-IP-Name:   IP
-  Private-Port-Name: TRANSPORT_PORT
-  Private-Port:      9300
-  Public-Port-Name:  TRANSPORT_PROXY_PORT
+  - Private-IP-Name:   IP
+    Private-Port-Name: PORT
+    Private-Port:      9200
+    Public-Port-Name:  PROXY_PORT
+    Protocols:
+    - http
+    Mappings:
+    - Frontend: ''
+      Backend: ''
+
+  - Private-IP-Name:   IP
+    Private-Port-Name: TRANSPORT_PORT
+    Private-Port:      9300
+    Public-Port-Name:  TRANSPORT_PROXY_PORT
