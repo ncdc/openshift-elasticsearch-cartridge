@@ -4,7 +4,6 @@ locked_files:
 - bin/*
 - env/
 - env/ELASTICSEARCH_VERSION
-- env/OPENSHIFT_ELASTICSEARCH_CLUSTER
 - hooks/
 - hooks/*
 processed_templates:
