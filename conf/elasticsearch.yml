@@ -29,7 +29,7 @@
 # Cluster name identifies your cluster for auto-discovery. If you're running
 # multiple clusters on the same network, make sure you're using unique names.
 #
-cluster.name: elasticsearch-<%= ENV['OPENSHIFT_APP_UUID'] %>
+cluster.name: elasticsearch-${OPENSHIFT_APP_UUID}
 
 
 #################################### Node #####################################
@@ -37,7 +37,7 @@ cluster.name: elasticsearch-<%= ENV['OPENSHIFT_APP_UUID'] %>
 # Node names are generated dynamically on startup, so you're relieved
 # from configuring them manually. You can tie this node to a specific name:
 #
-node.name: <%= ENV['OPENSHIFT_GEAR_UUID'] %>
+node.name: ${OPENSHIFT_GEAR_UUID}
 
 # Every node can be configured to allow or deny being eligible as the master,
 # and to allow or deny to store the data.
@@ -144,7 +144,7 @@ node.name: <%= ENV['OPENSHIFT_GEAR_UUID'] %>
 
 # Path to directory where to store index data allocated for this node.
 #
-path.data: <%= ENV['OPENSHIFT_DATA_DIR'] %>/elasticsearch
+path.data: ${OPENSHIFT_DATA_DIR}/elasticsearch
 #
 # Can optionally include more than one location, causing data to be striped across
 # the locations (a la RAID 0) on a file level, favouring locations with most free
@@ -158,7 +158,7 @@ path.data: <%= ENV['OPENSHIFT_DATA_DIR'] %>/elasticsearch
 
 # Path to log files:
 #
-path.logs: <%= ENV['OPENSHIFT_ELASTICSEARCH_DIR'] %>/logs
+path.logs: ${OPENSHIFT_ELASTICSEARCH_DIR}/logs
 
 # Path to where plugins are installed:
 #
@@ -198,13 +198,13 @@ path.logs: <%= ENV['OPENSHIFT_ELASTICSEARCH_DIR'] %>/logs
 
 # Set the bind address specifically (IPv4 or IPv6):
 #
-network.bind_host: <%= ENV['OPENSHIFT_ELASTICSEARCH_IP'] %>
+network.bind_host: ${OPENSHIFT_ELASTICSEARCH_IP}
 
 # Set the address other nodes will use to communicate with this node. If not
 # set, it is automatically derived. It must point to an actual IP address.
 #
-network.publish_host: PUBLISH_HOST
-network.publish_port: TRANSPORT_PROXY_PORT
+network.publish_host: ${PUBLISH_HOST}
+network.publish_port: ${OPENSHIFT_ELASTICSEARCH_TRANSPORT_PROXY_PORT}
 
 # Set both 'bind_host' and 'publish_host':
 #
@@ -322,7 +322,7 @@ discovery.zen.ping.multicast.enabled: false
 # 2. Configure an initial list of master nodes in the cluster
 #    to perform discovery when new nodes (master or data) are started:
 #
-discovery.zen.ping.unicast.hosts: UNICAST_HOSTS
+discovery.zen.ping.unicast.hosts: ${OPENSHIFT_ELASTICSEARCH_CLUSTER}
 
 # EC2 discovery allows to use AWS EC2 API in order to perform discovery.
 #

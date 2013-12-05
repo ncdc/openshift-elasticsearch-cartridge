@@ -2,7 +2,7 @@ Name: elasticsearch
 Cartridge-Short-Name: ELASTICSEARCH
 Display-Name: ElasticSearch 1.0.0.RC1-SNAPSHOT
 Description: "ElasticSearch"
-Version: '1.0.0.RC1-SNAPSHOT'
+Version: 1.0.0
 License: Apache
 Vendor: elasticsearch.org
 Cartridge-Version: 0.0.1
