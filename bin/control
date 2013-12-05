@@ -22,8 +22,11 @@ function start() {
     return 0
   fi
 
+  ip_address=$(python -c "import socket; print socket.gethostbyname('$OPENSHIFT_GEAR_DNS')")
+
   sed -i \
-      -e "s/TRANSPORT_TCP_PORT/$OPENSHIFT_ELASTICSEARCH_TRANSPORT_PROXY_PORT/" \
+      -e "s/PUBLISH_HOST/$ip_address/" \
+      -e "s/TRANSPORT_PROXY_PORT/$OPENSHIFT_ELASTICSEARCH_TRANSPORT_PROXY_PORT/" \
       -e "s/UNICAST_HOSTS/$OPENSHIFT_ELASTICSEARCH_CLUSTER/" \
       $OPENSHIFT_ELASTICSEARCH_DIR/conf/elasticsearch.yml > /dev/null 2>&1
 
