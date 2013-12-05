@@ -23,7 +23,6 @@ function start() {
   fi
 
   export PUBLISH_HOST=$(python -c "import socket; print socket.gethostbyname('$OPENSHIFT_GEAR_DNS')")
-  perl -p -e 's/\$\{?(\w+)\}?/(exists $ENV{$1}?$ENV{$1}:"missing variable $1")/eg' < $OPENSHIFT_ELASTICSEARCH_DIR/conf/elasticsearch.yml.tmpl > $OPENSHIFT_ELASTICSEARCH_DIR/conf/elasticsearch.yml
 
   $OPENSHIFT_ELASTICSEARCH_DIR/usr/bin/elasticsearch -p $PID_FILE
 }
