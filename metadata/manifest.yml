@@ -1,8 +1,9 @@
 Name: elasticsearch
 Cartridge-Short-Name: ELASTICSEARCH
-Display-Name: ElasticSearch 1.0.0.RC1-SNAPSHOT
-Description: "ElasticSearch"
-Version: 1.0.0
+Display-Name: ElasticSearch 0.90.11-SNAPSHOT
+Description: "ElasticSearch is a distributed restful search and analytics."
+Version: 0.90.11
+Versions: [ 0.90.11, 1.0.0.RC1 ]
 License: Apache
 Vendor: elasticsearch.org
 Cartridge-Version: 0.0.1
@@ -14,8 +15,8 @@ Categories:
 
 Provides:
   - elasticsearch
-  - elasticsearch-1.0.0.RC1-SNAPSHOT
-  - elasticsearch-1.0.0.RC1-SNAPSHOT
+  - elasticsearch-0.90
+  - elasticsearch-0.90.11
 
 Publishes:
   publish-unicast-host:
@@ -48,3 +49,11 @@ Endpoints:
     Private-Port-Name: TRANSPORT_PORT
     Private-Port:      9300
     Public-Port-Name:  TRANSPORT_PROXY_PORT
+
+Version-Overrides:
+  1.0.0.RC1:
+    Display-Name: ElasticSearch 1.0.0.RC1-SNAPSHOT
+    Provides:
+      - elasticsearch
+      - elasticsearch-1.0
+      - elasticsearch-1.0.0-RC1
