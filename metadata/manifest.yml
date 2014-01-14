@@ -20,6 +20,10 @@ Provides:
 Publishes:
   publish-unicast-host:
     Type: NET_TCP:elasticsearch-cluster-info
+  publish-http-url:
+    Type: NET_TCP:httpd-proxy-info
+  publish-gear-endpoint:
+    Type: NET_TCP:gear-endpoint-info
 
 Subscribes:
   set-unicast-hosts:
