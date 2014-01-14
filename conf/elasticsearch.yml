@@ -204,7 +204,7 @@ network.bind_host: ${OPENSHIFT_ELASTICSEARCH_IP}
 # set, it is automatically derived. It must point to an actual IP address.
 #
 network.publish_host: ${PUBLISH_HOST}
-network.publish_port: ${OPENSHIFT_ELASTICSEARCH_TRANSPORT_PROXY_PORT}
+transport.publish_port: ${OPENSHIFT_ELASTICSEARCH_TRANSPORT_PROXY_PORT}
 
 # Set both 'bind_host' and 'publish_host':
 #
