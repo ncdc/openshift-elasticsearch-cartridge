@@ -133,7 +133,7 @@ launch_service()
     else
         # Startup ElasticSearch, background it, and write the pid.
         exec "$JAVA" $JAVA_OPTS $ES_JAVA_OPTS $es_parms -Des.path.home="$ES_HOME" -cp "$ES_CLASSPATH" $props \
-                    org.elasticsearch.bootstrap.ElasticSearch <&- &
+                    org.elasticsearch.bootstrap.Elasticsearch <&- &
         return $?
     fi
 }
