@@ -4,6 +4,35 @@ source $OPENSHIFT_CARTRIDGE_SDK_BASH
 
 PID_FILE=$OPENSHIFT_ELASTICSEARCH_DIR/run/elasticsearch.pid
 
+function _install_plugins()
+{
+  local PLUGIN_CMD="$OPENSHIFT_ELASTICSEARCH_DIR/usr/bin/plugin -Des.path.plugins=$OPENSHIFT_DATA_DIR/elasticsearch-plugins"
+
+  old_plugins=$($PLUGIN_CMD --list | awk '/-/{print $2}' | xargs)
+  if [ -n "$old_plugins"  -a "$old_plugins" != "No" ]; then #ARGH!
+    echo "Removing old ElasticSearch plugins..."
+    for plugin in $old_plugins; do
+      $PLUGIN_CMD --remove $plugin
+    done
+  fi
+
+  echo "Installing ElasticSearch plugins..."
+
+  plugins="$(grep -v '^#' $OPENSHIFT_REPO_DIR/plugins.txt 2>/dev/null | xargs)"
+
+  if [ "${plugins}" ]; then
+    for plugin in ${plugins}; do
+      name=$(echo $plugin | cut -f 1 -d =)
+      url=$(echo $plugin | cut -f 2 -d =)
+      if [ "$name" == "$url" ]; then
+        $PLUGIN_CMD --install $name
+      else
+        $PLUGIN_CMD --url $url --install $name
+      fi
+    done
+  fi
+}
+
 function _is_running() {
   if [ -f $PID_FILE ]; then
     zpid=$(cat $PID_FILE 2> /dev/null)
@@ -25,6 +54,8 @@ function start() {
   export PUBLISH_HOST=$(python -c "import socket; print socket.gethostbyname('$OPENSHIFT_GEAR_DNS')")
 
   $OPENSHIFT_ELASTICSEARCH_DIR/usr/bin/elasticsearch -p $PID_FILE
+
+  _install_plugins
 }
 
 function stop() {
