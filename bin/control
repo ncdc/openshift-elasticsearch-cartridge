@@ -22,7 +22,8 @@ function start() {
     return 0
   fi
 
-  export PUBLISH_HOST=$(python -c "import socket; print socket.gethostbyname('$OPENSHIFT_GEAR_DNS')")
+  export PUBLISH_HOST="$OPENSHIFT_GEAR_DNS"
+  export ES_JAVA_OPTS="$ES_JAVA_OPTS -Des.path.conf=$OPENSHIFT_ELASTICSEARCH_DIR/conf"
 
   $OPENSHIFT_ELASTICSEARCH_DIR/usr/bin/elasticsearch -p $PID_FILE
 }

@@ -1,5 +1,25 @@
 #!/bin/bash -e
 
-mkdir -p $OPENSHIFT_ELASTICSEARCH_DIR/run $OPENSHIFT_DATA_DIR/elasticsearch
+case "$1" in
+	-v|--version)
+		version="$2"
+esac
 
-touch $OPENSHIFT_ELASTICSEARCH_DIR/env/OPENSHIFT_ELASTICSEARCH_CLUSTER
+# find default version
+if ! [ "${version}" ]; then
+	version="$(grep '^Version:' metadata/manifest.yml | cut -f 2 -d : | xargs)"
+	[ -n "$version" ] && [ -d "$OPENSHIFT_ELASTICSEARCH_DIR/versions/$version" ]
+fi
+
+# copy version specific elasticsearch bin
+ln -s $OPENSHIFT_ELASTICSEARCH_DIR/versions/$version $OPENSHIFT_ELASTICSEARCH_DIR/usr
+
+# copy version specific config, or fallback to default
+if [ -e $OPENSHIFT_ELASTICSEARCH_DIR/versions/$version/conf ]; then
+	cp -HR $OPENSHIFT_ELASTICSEARCH_DIR/versions/$version/conf $OPENSHIFT_ELASTICSEARCH_DIR/
+else
+	cp -HR $OPENSHIFT_ELASTICSEARCH_DIR/versions/shared/conf $OPENSHIFT_ELASTICSEARCH_DIR/
+fi
+
+# create additional dirs
+mkdir -p $OPENSHIFT_ELASTICSEARCH_DIR/run $OPENSHIFT_DATA_DIR/{elasticsearch,elasticsearch-plugins}
