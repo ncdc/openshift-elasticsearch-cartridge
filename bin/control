@@ -54,8 +54,6 @@ function start() {
   export PUBLISH_HOST=$(python -c "import socket; print socket.gethostbyname('$OPENSHIFT_GEAR_DNS')")
 
   $OPENSHIFT_ELASTICSEARCH_DIR/usr/bin/elasticsearch -p $PID_FILE
-
-  _install_plugins
 }
 
 function stop() {
@@ -96,10 +94,15 @@ function status() {
   fi
 }
 
+function deploy() {
+   _install_plugins
+}
+
 case "$1" in
   start)             start ;;
   stop)              stop ;;
   restart | reload ) restart $1 ;;
   status)            status ;;
+  deploy)            deploy ;;
   *)                 exit 0
 esac
