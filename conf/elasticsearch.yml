@@ -162,7 +162,7 @@ path.logs: ${OPENSHIFT_ELASTICSEARCH_DIR}/logs
 
 # Path to where plugins are installed:
 #
-# path.plugins: /path/to/plugins
+path.plugins: ${OPENSHIFT_DATA_DIR}/elasticsearch-plugins
 
 
 #################################### Plugin ###################################
