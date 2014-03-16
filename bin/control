@@ -53,7 +53,7 @@ function start() {
 
   export PUBLISH_HOST=$(python -c "import socket; print socket.gethostbyname('$OPENSHIFT_GEAR_DNS')")
 
-  $OPENSHIFT_ELASTICSEARCH_DIR/usr/bin/elasticsearch -p $PID_FILE
+  $OPENSHIFT_ELASTICSEARCH_DIR/usr/bin/elasticsearch -d -p $PID_FILE
 }
 
 function stop() {
