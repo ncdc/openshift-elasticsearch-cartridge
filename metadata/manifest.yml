@@ -1,6 +1,6 @@
 Name: elasticsearch
 Cartridge-Short-Name: ELASTICSEARCH
-Display-Name: ElasticSearch 0.90.11
+Display-Name: ElasticSearch 1.0.1
 Description: "ElasticSearch"
 Version: 1.0.0
 License: Apache
@@ -14,7 +14,7 @@ Categories:
 
 Provides:
   - elasticsearch
-  - elasticsearch-0.90.11
+  - elasticsearch-1.0.1
 
 Publishes:
   publish-unicast-host:
