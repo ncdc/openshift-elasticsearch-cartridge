@@ -4,7 +4,7 @@ Downloadable ElasticSearch cartridge for OpenShift.
 
 To create your scalable ElasticSearch app, run:
 
-    rhc app create <your app name> https://gist.githubusercontent.com/oliviermi/11247443/raw/d75336cc37dac45ad749648afb92ad4a03c92261/manifest.yml-s
+    rhc app create <your app name> http://cartreflect-claytondev.rhcloud.com/github/ncdc/openshift-elasticsearch-cartridge -s
 
 **NOTE:** your app currently must be a scalable app or this cartridge will not run.
 
